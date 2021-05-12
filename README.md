@@ -1,1 +1,5 @@
-38-6 need show again last some minutes
+Ema-Jhon is a simple E-commerce website template. 
+
+
+
+Author: Arifur Rahman...
