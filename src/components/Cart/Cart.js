@@ -3,14 +3,14 @@ import "./Cart.css";
 
 const Cart = (props) => {
     const cart = props.cart;
-    console.log(cart);
 
     // const totalPrice = cart.reduce((total, prd) => total + prd.price, 0);
     // othoba
     let totalPrice = 0;
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        totalPrice = totalPrice + product.price;
+        totalPrice = totalPrice + product.price * product.quantity;
+        
     }
 
     let shipping = 12.9;
@@ -20,7 +20,7 @@ const Cart = (props) => {
     else if(totalPrice > 100){
         shipping = 4.99;
     }
-    if (cart == 0) {
+    if (cart === 0) {
         shipping = 0;
         totalPrice = 0;
     }
@@ -36,12 +36,17 @@ const Cart = (props) => {
     }
     return (
         <div className='cart-main-container'>
-            <h3>Order Summary</h3>
+            <h3 className="text-warning">Order Summary</h3>
             <p>Orderd Items: {cart.length}</p>
             <p>Product Price: {formatNumber(totalPrice)}</p>
             <p><small>Shipping Cost: {shipping}</small></p>
             <p><small>Government Tax: {tax}</small></p>
             <p>Total Price: {grandTotalPrice}</p>
+            <br></br>
+            
+            {
+                props.children
+            }
         </div>
     );
 };
